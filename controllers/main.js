@@ -1,8 +1,13 @@
+const { getData, endpoints } = require("../appModules/api");
 const staticFile = require("../appModules/http-utils/static-file");
+const { makeRatingFile, config } = require("../appModules/rating");
 
-function mainRouteController(res, publicUrl, extname) {
+async function mainRouteController(res, publicUrl, extname) {
+  const data = await getData(endpoints.games)
+  console.log(data)
+  await makeRatingFile(config.BASE_PATH_RATING_FILE, data)
   res.statusCode = 200;
-  staticFile(res, publicUrl, extname);
+  staticFile(res, publicUrl, extname);  
 }
 
 module.exports = mainRouteController
