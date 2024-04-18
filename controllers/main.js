@@ -4,7 +4,6 @@ const { makeRatingFile, config } = require("../appModules/rating");
 
 async function mainRouteController(res, publicUrl, extname) {
   const data = await getData(endpoints.games)
-  console.log(data)
   await makeRatingFile(config.BASE_PATH_RATING_FILE, data)
   res.statusCode = 200;
   staticFile(res, publicUrl, extname);  

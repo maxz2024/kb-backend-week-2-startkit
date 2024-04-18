@@ -1,4 +1,3 @@
-console.log("Подключил script.js")
 const fetchGame = async url => {
   try {
     const response = await fetch(url);
